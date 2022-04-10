@@ -29,42 +29,16 @@ while game_is_on:
         state_data = data[data.state == answer_state]
         t.goto(int(state_data.x), int(state_data.y))
         t.write(answer_state)
-    # if len(list_of_states) == 50:
-    #     game_is_on = False
+
     if answer_state == "Exit":
-        missing_states = []
-        for state in list_of_states:
-            if state not in target_states:
-                missing_states.append(state)
+        missing_states = [state for state in list_of_states if state not in target_states]
+
         data_new = pandas.DataFrame(missing_states, columns=["Missing States"])
         data_new.to_csv("Missing_states.csv", index=False)
 
         break
     print(target_states)
-    # t.write(arg=f"{answer_state}", align="center", font=("New Roman", 8, "bold"))
 
-    # for name in name_state:
-    #
-    #     if answer_state == name:
-    #         turtle.write(arg=f"{answer_state}", align="center", font=("New Roman", 8, "bold"))
-    #         list_of_states.append(answer_state)
-    #         # state_name = data[data.state == answer_state]
-    #         # x_value = data.loc[f"{answer_state}", "x"]
-    #         # print(x_value)
-    #
-    #         x_value = data.loc[data.state == answer_state, "x"].values[0]
-    #         y_value = data.loc[data.state == answer_state, "y"].values[0]
-    #         turtle.goto(x=x_value, y=y_value)
-    #
-
-    #         # the_state = data[data.state == answer_state]
-    #         # x_value = the_state.x.value()
-    #         # print(x_value)
-    #         # y_value = the_state.y
-    #         print(x_value, y_value)
-    #         # turtle.write(arg=f"{answer_state}", align="center", font=("New Roman", 8, "bold"))
-    #         # turtle.goto(x_value, y_value)
-    #
 
 
 
